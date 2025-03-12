@@ -1,3 +1,5 @@
+use std::collections::HashMap;
+
 
 fn main(){   
     print!("{}",is_even(20));
@@ -11,7 +13,8 @@ fn main(){
     let circle = Shape::Circle(10.00);
     println!("area of circle is - {:?}",area(circle));
 
-    vec1()
+    vec1();
+    hashmap();
 }
 
 fn is_even(num1:i128)->bool{
@@ -42,7 +45,7 @@ fn get_string(str1:&str)->usize{
     str1.chars().count()
 }
 
-// Structs lets you structure data together ther are slighly closure to classes in rust
+// Structs lets you structure data together
 
 struct User {
     name:String,
@@ -90,10 +93,10 @@ fn area(shape:Shape) -> f64 {
 
 // Collections can contain multiple values the data they point stored in a heap.
 
-// Vectors 
+    // 1- Vectors 
 
 fn vec1(){
-    let mut vec = Vec::new();
+    let mut vec: Vec<i32> = Vec::new();
     vec.push(8);
     vec.push(1);
     vec.push(10);
@@ -112,4 +115,26 @@ fn even_vec(vec: Vec<i32>){
         }
     }
     println!("{:?}",vec2)
+}
+
+    // 2- Hashmap Stores key value pair in rust 
+
+fn hashmap(){
+    let mut data = HashMap::new();
+
+    data.insert(String::from("Jose"), 10);
+    data.insert(String::from("Joshua"), 18);
+
+    let user_age = data.get("Jose");
+
+    // println!("{}",user_age); 
+
+    // above print statement gives Error cause the return type is Option<i32> it could return something or null so u will have to handle both,
+    // Using match.
+
+    match user_age {
+        Some(age)=>println!(" age of Jose - {}",age),
+        None=>println!("Empty value")
+    }
+    
 }
