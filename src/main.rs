@@ -15,6 +15,9 @@ fn main(){
 
     vec1();
     hashmap();
+
+    let input_vec = vec![(String::from("Leo"),18) , (String::from("joshe"),21)];
+    println!("{:?}",hashmap_val_group(input_vec));
 }
 
 fn is_even(num1:i128)->bool{
@@ -120,6 +123,7 @@ fn even_vec(vec: Vec<i32>){
     // 2- Hashmap Stores key value pair in rust 
 
 fn hashmap(){
+
     let mut data = HashMap::new();
 
     data.insert(String::from("Jose"), 10);
@@ -138,3 +142,13 @@ fn hashmap(){
     }
     
 }
+
+fn hashmap_val_group(vec:Vec<(String,i32)>)->HashMap<String , i32>{
+    let mut hash_map = HashMap::new();
+    for (key,value) in vec{
+        hash_map.insert(key, value);
+    }
+    return hash_map;
+}
+
+// Iterators 
