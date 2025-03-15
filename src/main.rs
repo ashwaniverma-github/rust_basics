@@ -157,7 +157,7 @@ fn hashmap_val_group(vec:Vec<(String,i32)>)->HashMap<String , i32>{
 
 // Iterators 
 
-// 1) Normal iter
+// 1)  immutable iterator
 
 fn iter(){
     let x = vec![1,2,3,4];
