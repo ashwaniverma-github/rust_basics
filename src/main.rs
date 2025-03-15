@@ -18,6 +18,10 @@ fn main(){
 
     let input_vec = vec![(String::from("Leo"),18) , (String::from("joshe"),21)];
     println!("{:?}",hashmap_val_group(input_vec));
+
+    iter();
+    mut_iter();
+    own_iter();
 }
 
 fn is_even(num1:i128)->bool{
@@ -152,3 +156,42 @@ fn hashmap_val_group(vec:Vec<(String,i32)>)->HashMap<String , i32>{
 }
 
 // Iterators 
+
+// 1) Normal iter
+
+fn iter(){
+    let x = vec![1,2,3,4];
+    let iter = x.iter(); // borrows value from x vector
+
+    for nums in iter{
+        println!("{}",nums)
+    }
+}
+
+// 2) Mutable iterator
+
+fn mut_iter(){
+    let mut x = vec![1,2,3];
+
+    let iter = x.iter_mut(); // it takes a mutable reference
+
+    for nums in iter{
+        *nums = *nums *2;
+        println!("muted - {}",nums)
+    }
+    println!(" muted- {:?}",x);
+}
+
+// 3) into_iter - takes ownership 
+
+fn own_iter(){
+    let x = vec![3,2,1];
+
+    let iter = x.into_iter();
+
+    for nums in iter{
+        println!("owned-{}",nums)
+    }
+    // print!("{:?}",x) will give error as x is nomore an owner
+
+}
