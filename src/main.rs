@@ -21,7 +21,10 @@ fn main(){
 
     iter();
     mut_iter();
-    own_iter();
+    into_iter();
+    cons_adaptor();
+    iter_adaptor();
+    assignment();
 }
 
 fn is_even(num1:i128)->bool{
@@ -166,6 +169,7 @@ fn iter(){
     for nums in iter{
         println!("{}",nums)
     }
+    println!("{:?}",x) // owner of the vector will still be x 
 }
 
 // 2) Mutable iterator
@@ -173,21 +177,21 @@ fn iter(){
 fn mut_iter(){
     let mut x = vec![1,2,3];
 
-    let iter = x.iter_mut(); // it takes a mutable reference
+    let iter = x.iter_mut(); // it takes a mutable reference does not consumed the x vector.
 
     for nums in iter{
         *nums = *nums *2;
         println!("muted - {}",nums)
     }
-    println!(" muted- {:?}",x);
+    println!(" muted- {:?}",x); // owner the vector will still be x
 }
 
 // 3) into_iter - takes ownership 
 
-fn own_iter(){
+fn into_iter(){
     let x = vec![3,2,1];
 
-    let iter = x.into_iter();
+    let iter = x.into_iter(); // consumes the x vector 
 
     for nums in iter{
         println!("owned-{}",nums)
@@ -195,3 +199,47 @@ fn own_iter(){
     // print!("{:?}",x) will give error as x is nomore an owner
 
 }
+
+// Consuming adaptor - methods that consumes the iterator resulting in not able to use that iterator anymore
+
+fn cons_adaptor(){
+    let x  = vec![4,5,6];
+
+    let iter = x.iter();
+    
+    let sum:i32 = iter.sum(); // consumes / takes ownership of iter
+
+    println!("{}",sum);
+
+    // for nums in iter{  // gives error as the sum method owns iterator now
+    //     println!("{}",nums)
+    // }
+
+
+}
+
+// iterator adaptor - Iterator adaptors like map are lazy and produce a new iterator for further chaining. However, they also take ownership of the original iterator—so you must use the new iterator, not the original.
+
+fn iter_adaptor(){
+    let x = vec![7,8,9];
+
+    let iter = x.iter();
+
+    let map_method = iter.map(|x| x+3);
+    
+    for nums in map_method{
+        println!("{}",nums)
+    }
+}
+
+
+// Write the logic to first filter all odd values then double each value and create new vector
+fn assignment(){
+    let v1 = vec![2,5,3,4,8,7];
+
+    let res = v1.into_iter().filter(|x| *x%2 !=0 ).map(|x|x*2);
+    let v2:Vec<i32> = res.collect(); // converts iterator to vector
+    println!("{:?}",v2)
+
+}
+
