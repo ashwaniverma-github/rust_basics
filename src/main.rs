@@ -25,6 +25,8 @@ fn main(){
     cons_adaptor();
     iter_adaptor();
     assignment();
+    strings();
+    println!("{}",largets_among(2, 1))
 }
 
 fn is_even(num1:i128)->bool{
@@ -243,3 +245,30 @@ fn assignment(){
 
 }
 
+//               Strings and Slices
+
+// String
+fn strings(){
+    let mut name = String::from("Rust is ");
+    name.push_str("hard");
+
+    println!("{}",name);
+
+    name.replace_range(4.., "");
+
+    println!("{}",name)
+    
+}
+
+// Slices 
+
+
+// Generics - anything that accepts one or more generic type parameters <T> 
+
+fn largets_among<T:std::cmp::PartialOrd>(a:T,b:T)->T{
+    if a>b{
+        a
+    }else {
+        b
+    }
+}
