@@ -29,6 +29,7 @@ fn main(){
     println!("{}",largets_among(2, 1));
     beginner_prob();
     string_reversal();
+    factorial();
 }
 
 fn is_even(num1:i128)->bool{
@@ -296,7 +297,8 @@ fn beginner_prob(){
 fn string_reversal(){
     let mut input = String::new();
     io::stdin()
-        .read_line(&mut input);
+        .read_line(&mut input)
+        .expect("Failed to read line");
         match input.trim().is_empty(){
             false =>{
                  println!("original input is - {}",input)
@@ -309,7 +311,8 @@ fn string_reversal(){
     println!("reversed string is - {}" , res)
 }
 
-//Task: Implement a function to compute the factorial of a number
-fn factorial(){
+// Task: Implement a function to compute the factorial of a number
 
+fn factorial(){
+    
 }
