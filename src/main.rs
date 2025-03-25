@@ -299,7 +299,7 @@ fn string_reversal(){
         .read_line(&mut input);
         match input.trim().is_empty(){
             false =>{
-                 println!("origin input is - {}",input)
+                 println!("original input is - {}",input)
             }
             true => {
                 println!("Input something bro")
@@ -307,4 +307,9 @@ fn string_reversal(){
         }
     let res: String = input.chars().rev().collect();
     println!("reversed string is - {}" , res)
+}
+
+//Task: Implement a function to compute the factorial of a number
+fn factorial(){
+
 }
