@@ -1,4 +1,4 @@
-use std::collections::HashMap;
+use std::{collections::HashMap, io};
 
 
 fn main(){   
@@ -26,7 +26,8 @@ fn main(){
     iter_adaptor();
     assignment();
     strings();
-    println!("{}",largets_among(2, 1))
+    println!("{}",largets_among(2, 1));
+    beginner_prob();
 }
 
 fn is_even(num1:i128)->bool{
@@ -271,4 +272,26 @@ fn largets_among<T:std::cmp::PartialOrd>(a:T,b:T)->T{
     }else {
         b
     }
+}
+
+
+// Write a program that prints "Hello, World!" to the console and then reads a line of user input, echoing it back.
+
+fn beginner_prob(){
+    println!("{}",String::from("hello-world"));
+
+    let mut input = String::new();
+
+    io::stdin()
+        .read_line(&mut input)
+        .expect("Input is wrong");
+
+    println!("your input was {}" , input)
+
+}
+
+// Write a function that takes a String as input and returns its reversed
+
+fn string_reversal(){
+    
 }
