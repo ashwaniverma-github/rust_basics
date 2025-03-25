@@ -28,6 +28,7 @@ fn main(){
     strings();
     println!("{}",largets_among(2, 1));
     beginner_prob();
+    string_reversal();
 }
 
 fn is_even(num1:i128)->bool{
@@ -290,8 +291,20 @@ fn beginner_prob(){
 
 }
 
-// Write a function that takes a String as input and returns its reversed
+// Write a function that takes a String as input from the user  and returns its reversed
 
 fn string_reversal(){
-    
+    let mut input = String::new();
+    io::stdin()
+        .read_line(&mut input);
+        match input.trim().is_empty(){
+            false =>{
+                 println!("origin input is - {}",input)
+            }
+            true => {
+                println!("Input something bro")
+            }
+        }
+    let res: String = input.chars().rev().collect();
+    println!("reversed string is - {}" , res)
 }
